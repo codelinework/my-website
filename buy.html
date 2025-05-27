@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Customer Purchase Form - ShopEasy</title>
+    <style>
+        /* Reset */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove padding so navbar is flush */
+            color: #2c3e50;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Navbar - full width, no space */
+        nav {
+            background-color: #333;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            width: 100vw; /* full viewport width */
+            box-sizing: border-box;
+            border-radius: 0; /* no rounding so edges flush */
+            position: fixed; /* optional: fixed to top */
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        nav .brand {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            user-select: none;
+        }
+
+        nav .nav-items {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        nav form {
+            display: flex;
+            align-items: center;
+        }
+
+        nav input[type="text"] {
+            padding: 6px 10px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+            outline: none;
+            min-width: 150px;
+        }
+
+        nav button {
+            padding: 6px 15px;
+            border: none;
+            background: #28a745;
+            color: white;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        nav button:hover {
+            background-color: #218838;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            white-space: nowrap;
+        }
+
+        nav a:hover {
+            color: #28a745;
+        }
+
+        /* Container for rest of the page below navbar */
+        main.container {
+            margin-top: 80px; /* height space for fixed navbar */
+            padding: 40px 20px;
+            width: 100%;
+            max-width: 600px;
+            box-sizing: border-box;
+        }
+
+        /* Purchase form styles */
+        form.purchase-form {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        form.purchase-form h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            user-select: none;
+        }
+
+        form.purchase-form label {
+            margin: 8px 0;
+            display: block;
+            font-weight: 600;
+        }
+
+        form.purchase-form input[type="text"],
+        form.purchase-form input[type="email"],
+        form.purchase-form input[type="number"],
+        form.purchase-form input[type="date"],
+        form.purchase-form textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 4px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            resize: vertical;
+            font-family: inherit;
+            box-sizing: border-box;
+        }
+
+        form.purchase-form textarea {
+            min-height: 60px;
+        }
+
+        form.purchase-form button {
+            padding: 12px 0;
+            width: 100%;
+            background-color: #42b400;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            margin-top: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        form.purchase-form button:hover {
+            background-color: #369800;
+        }
+
+        /* Responsive tweak */
+        @media (max-width: 480px) {
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            nav .nav-items {
+                width: 100%;
+                justify-content: space-between;
+                gap: 10px;
+                margin-top: 10px;
+            }
+            nav form input[type="text"] {
+                min-width: 100px;
+            }
+            main.container {
+                padding: 20px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="brand">🛒 ShopEasy</div>
+        <div class="nav-items">
+            <form action="product.html" method="GET" role="search">
+                <input 
+                    type="text" 
+                    name="q" 
+                    placeholder="Search products..." 
+                    required 
+                    aria-label="Search products"
+                />
+                <button type="submit">Search</button>
+            </form>
+            <a href="index.html">Home</a>
+            <a href="login.html">Login</a>
+            <a href="login.html">Register</a>
+            <a href="product.html">Products</a>
+            <a href="contact.html">Contact</a>
+            <a href="cart.html">Cart</a>
+        </div>
+    </nav>
+
+    <!-- Main content container -->
+    <main class="container">
+        <!-- Purchase Form -->
+        <form class="purchase-form" method="post" action="index.html">
+            <h2>🛒 Enter Purchase Details</h2>
+
+            <label for="name">Customer Name:</label>
+            <input type="text" id="name" name="name" required />
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required />
+
+
+            <label for="order_date">Order Date:</label>
+            <input type="date" id="order_date" name="order_date" required />
+
+            <label for="address">Shipping Address:</label>
+            <textarea id="address" name="address" required></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+    </main>
+
+</body>
+</html>
